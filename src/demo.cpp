@@ -34,7 +34,6 @@ int main() {
     rudp.udp_bind();
     while (1){
         std::string rdata=rudp.udp_recv();
-        // printf("recv:%s\n", rdata.c_str());
 
         vector<string> arr1 = split(rdata.c_str(), "\t");
         std::string sensorType = arr1[1];
@@ -45,7 +44,6 @@ int main() {
             float wx = std::stof(arr2[1].c_str());
             float wy = std::stof(arr2[2].c_str());
             float wz = std::stof(arr2[3].c_str());
-            // printf("%f, %f, %f, %f\n", ts, wx, wy, wz);
 
             if (pre_ts==0) {pre_ts = ts;}
             else {

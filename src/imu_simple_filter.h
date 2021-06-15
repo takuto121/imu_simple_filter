@@ -25,15 +25,11 @@ class IMUFilterSimple {
         };
 
         void update(float wx, float wy, float wz, float dt) {
-            // printf("w: %f, %f, %f\n",wx, wy, wz);
-
             theta = sqrt(wx*wx + wy*wy + wz*wz)*dt;
-            // printf("theta: %f\n", theta);
 
             nx = wx*dt/theta;
             ny = wy*dt/theta;
             nz = wz*dt/theta;
-            // printf("n: %f, %f, %f\n",nx, ny, nz);
  
             n11 = 0;
             n12 = -nz;
@@ -57,7 +53,6 @@ class IMUFilterSimple {
             o31 = -s*ny - c*nx*nz + nx*nz;
             o32 = s*nx - c*ny*nz + ny*nz;
             o33 = c*nx*nx + c*ny*ny - nx*nx - ny*ny + 1;
-            // printf("Omega: %f, %f, %f, %f, %f, %f, %f, %f, %f\n",o11, o12, o13, o21, o22, o23, o31, o32, o33);
 
             r11 = r11*o11 + r12*o21 + r13*o31;
             r12 = r11*o12 + r12*o22 + r13*o32;
