@@ -2,15 +2,10 @@ import hypermedia.net.*;
 
 UDP udp;
 
-float yaw = 0.0;
-float pitch = 0.0;
-float roll = 0.0;
-
-float r11, r12, r13, r21, r22, r23, r31, r32, r33;
-
-final String IP = "127.0.0.1";//this PC IP
+final String IP = "127.0.0.1";
 final int PORT = 4002;
 
+float r11, r12, r13, r21, r22, r23, r31, r32, r33;
 String msg = "";
 
 void setup()
@@ -22,7 +17,6 @@ void setup()
 
 void receive( byte[] data, String ip, int port ) {
   msg = new String( data );
-  //println(msg);
   String[] datas = msg.split(",");
   r11 = float(datas[0]);
   r12 = float(datas[1]);
@@ -33,8 +27,6 @@ void receive( byte[] data, String ip, int port ) {
   r31 = float(datas[6]);
   r32 = float(datas[7]);
   r33 = float(datas[8]);
-  
-  println(datas[0], datas[1], datas[2], datas[3], datas[4], datas[5], datas[6], datas[7], datas[8]);
 }
 
 void draw()
